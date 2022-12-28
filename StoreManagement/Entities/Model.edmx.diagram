@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="19e577a9a7ad4bc1b08542aed1dc7f47" Name="Diagram1">
+        <EntityTypeShape EntityType="DBStoreManagementModel.Bill" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.BillDetail" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Brand" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Category" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.CodePromotion" Width="1.5" PointX="0.75" PointY="11" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.CustomerInfo" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Product" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Role" Width="1.5" PointX="1.5" PointY="18.625" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.User" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Warranty" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Bill__CashierID__1ED998B2" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Bill__DiscountCo__45F365D3" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__BillDetai__BillI__1ED998B2" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__BillDetai__Produ__21B6055D" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Product__BrandID__15502E78" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Product__TypeId__164452B1" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Warranty__PhoneN__267ABA7A" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Warranty__Produc__276EDEB3" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Users__RoleId__1B0907CE" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.BillDetail1" Width="1.5" PointX="11.875" PointY="0.75" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Bill1" Width="1.5" PointX="9.625" PointY="12.375" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Brand1" Width="1.5" PointX="7.375" PointY="4" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Category1" Width="1.5" PointX="7.375" PointY="9" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.CodePromotion1" Width="1.5" PointX="7.375" PointY="12.625" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.CustomerInfo1" Width="1.5" PointX="9.625" PointY="8.875" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Product1" Width="1.5" PointX="9.625" PointY="3.125" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Role1" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="DBStoreManagementModel.Warranty1" Width="1.5" PointX="11.875" PointY="3.625" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__BillDetai__BillI__1ED998B21" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__BillDetai__Produ__21B6055D1" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Bill__CashierID__1ED998B21" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Bill__DiscountCo__45F365D31" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Product__BrandID__15502E781" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Product__TypeId__164452B11" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Warranty__PhoneN__267ABA7A1" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Warranty__Produc__276EDEB31" />
+        <AssociationConnector Association="DBStoreManagementModel.FK__Users__RoleId__1B0907CE1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBStoreManagementModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DBStoreManagementModelStoreContainer">
+    <EntitySet Name="Bills" EntityType="DBStoreManagementModel.Store.Bills" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BillDetails" EntityType="DBStoreManagementModel.Store.BillDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Brands" EntityType="DBStoreManagementModel.Store.Brands" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="DBStoreManagementModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CodePromotions" EntityType="DBStoreManagementModel.Store.CodePromotions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerInfoes" EntityType="DBStoreManagementModel.Store.CustomerInfoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="DBStoreManagementModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="DBStoreManagementModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DBStoreManagementModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Warranties" EntityType="DBStoreManagementModel.Store.Warranties" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Bill__CashierID__1ED998B2" Association="DBStoreManagementModel.Store.FK__Bill__CashierID__1ED998B2">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Bill" EntitySet="Bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__DiscountCo__45F365D3" Association="DBStoreManagementModel.Store.FK__Bill__DiscountCo__45F365D3">
+      <End Role="CodePromotion" EntitySet="CodePromotions" />
+      <End Role="Bill" EntitySet="Bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillDetai__BillI__1ED998B2" Association="DBStoreManagementModel.Store.FK__BillDetai__BillI__1ED998B2">
+      <End Role="Bill" EntitySet="Bills" />
+      <End Role="BillDetail" EntitySet="BillDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillDetai__Produ__21B6055D" Association="DBStoreManagementModel.Store.FK__BillDetai__Produ__21B6055D">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="BillDetail" EntitySet="BillDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__BrandID__15502E78" Association="DBStoreManagementModel.Store.FK__Product__BrandID__15502E78">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__TypeId__164452B1" Association="DBStoreManagementModel.Store.FK__Product__TypeId__164452B1">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Warranty__PhoneN__267ABA7A" Association="DBStoreManagementModel.Store.FK__Warranty__PhoneN__267ABA7A">
+      <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
+      <End Role="Warranty" EntitySet="Warranties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Warranty__Produc__276EDEB3" Association="DBStoreManagementModel.Store.FK__Warranty__Produc__276EDEB3">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Warranty" EntitySet="Warranties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__RoleId__1B0907CE" Association="DBStoreManagementModel.Store.FK__Users__RoleId__1B0907CE">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bills">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillDate" Type="datetime" Nullable="false" />
+    <Property Name="CashierID" Type="int" Nullable="false" />
+    <Property Name="TotalPrice" Type="float" Nullable="false" />
+    <Property Name="DiscountCode" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="LastTotalPrice" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BillDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="BillID" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Brands">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CodePromotions">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CodeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CodePercent" Type="float" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerInfoes">
+    <Key>
+      <PropertyRef Name="PhoneNumber" />
+    </Key>
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BrandID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="ImageURL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OriginalPrice" Type="float" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="UserName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="IdentityCard" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Birthdate" Type="datetime" Nullable="true" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Warranties">
+    <Key>
+      <PropertyRef Name="WarrantyID" />
+      <PropertyRef Name="PhoneNumber" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="WarrantyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Bill__CashierID__1ED998B2">
+    <End Role="User" Type="DBStoreManagementModel.Store.Users" Multiplicity="1" />
+    <End Role="Bill" Type="DBStoreManagementModel.Store.Bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="CashierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__DiscountCo__45F365D3">
+    <End Role="CodePromotion" Type="DBStoreManagementModel.Store.CodePromotions" Multiplicity="0..1" />
+    <End Role="Bill" Type="DBStoreManagementModel.Store.Bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CodePromotion">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="DiscountCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillDetai__BillI__1ED998B2">
+    <End Role="Bill" Type="DBStoreManagementModel.Store.Bills" Multiplicity="1" />
+    <End Role="BillDetail" Type="DBStoreManagementModel.Store.BillDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="BillID" />
+      </Principal>
+      <Dependent Role="BillDetail">
+        <PropertyRef Name="BillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillDetai__Produ__21B6055D">
+    <End Role="Product" Type="DBStoreManagementModel.Store.Products" Multiplicity="1" />
+    <End Role="BillDetail" Type="DBStoreManagementModel.Store.BillDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BillDetail">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__BrandID__15502E78">
+    <End Role="Brand" Type="DBStoreManagementModel.Store.Brands" Multiplicity="1" />
+    <End Role="Product" Type="DBStoreManagementModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__TypeId__164452B1">
+    <End Role="Category" Type="DBStoreManagementModel.Store.Categories" Multiplicity="1" />
+    <End Role="Product" Type="DBStoreManagementModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Warranty__PhoneN__267ABA7A">
+    <End Role="CustomerInfo" Type="DBStoreManagementModel.Store.CustomerInfoes" Multiplicity="1" />
+    <End Role="Warranty" Type="DBStoreManagementModel.Store.Warranties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerInfo">
+        <PropertyRef Name="PhoneNumber" />
+      </Principal>
+      <Dependent Role="Warranty">
+        <PropertyRef Name="PhoneNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Warranty__Produc__276EDEB3">
+    <End Role="Product" Type="DBStoreManagementModel.Store.Products" Multiplicity="1" />
+    <End Role="Warranty" Type="DBStoreManagementModel.Store.Warranties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Warranty">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__RoleId__1B0907CE">
+    <End Role="Role" Type="DBStoreManagementModel.Store.Roles" Multiplicity="1" />
+    <End Role="User" Type="DBStoreManagementModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

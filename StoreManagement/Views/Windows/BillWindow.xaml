@@ -1,0 +1,345 @@
+﻿<Window x:Class="StoreManagement.Views.Windows.BillWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreManagement.Views.Windows"
+          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+              TextElement.FontWeight="Regular"
+              TextElement.FontSize="13"
+              TextOptions.TextFormattingMode="Ideal"
+              TextOptions.TextRenderingMode="Auto"       
+              FontFamily="{DynamicResource MaterialDesignFont}"
+              Background="{DynamicResource MaterialDesignPaper}"     
+              DataContext="{StaticResource BillVM}"
+             WindowStartupLocation="CenterScreen"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1200"
+            Title="Hóa đơn"
+        Name="billWindow"
+        WindowState="Maximized"
+        >
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}" x:Key="BoldStyle">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontFamily" Value="Segoe"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="TitileStyle">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="NormalStyle">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Margin="10,10,0,0">
+                    <Grid Height="48" Background="#FF5C99D6" Grid.Row="0">
+                        <TextBlock Text="Danh sách sản phẩm" Foreground="White"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TitileStyle}"/>
+                    </Grid>
+                    <!-- List sách -->
+                    <materialDesign:Card Height="auto" Width="auto">
+                        <DataGrid HorizontalAlignment="Left"
+                        Margin="0 0 0 0"
+                        Height="250"                   
+                        ItemsSource="{Binding ListBasketDetails}"
+                        CanUserSortColumns="True"
+                        CanUserAddRows="False"
+                        AutoGenerateColumns="False"
+                        Width="765"
+                        materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                        materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                        SelectedItem="{Binding SelectedItem}">
+                            
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                       Binding="{Binding ProductId}"
+                                       Header="Mã"
+                                       IsReadOnly="True"
+                                       Width="80" MinWidth="80">
+                                </DataGridTextColumn>
+
+                                <materialDesign:MaterialDataGridTextColumn                                        
+                                       Binding="{Binding ProductName}"     
+                                       Header="Tên sản phẩm"
+                                       Width="130"
+                                       MinWidth="130"
+                                       IsReadOnly="True">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </materialDesign:MaterialDataGridTextColumn>
+
+                                <materialDesign:MaterialDataGridTextColumn                                        
+                                       Binding="{Binding UnitPrice,StringFormat='0,0đ'}"     
+                                       Header="Giá bán"
+                                       Width="120"
+                                       MinWidth="120"
+                                       IsReadOnly="True">
+                                </materialDesign:MaterialDataGridTextColumn>
+
+                                <materialDesign:MaterialDataGridTextColumn                                
+                                       Binding="{Binding Quantity,StringFormat='0',UpdateSourceTrigger=PropertyChanged}"
+                                       Header="Số lượng"
+                                       Width="80"
+                                       MinWidth="80"
+                                       IsReadOnly="False"
+                                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                                  
+                                </materialDesign:MaterialDataGridTextColumn>
+
+                                <materialDesign:MaterialDataGridTextColumn                                        
+                                       Binding="{Binding TotalPrice,StringFormat='0,0đ', UpdateSourceTrigger=PropertyChanged}"     
+                                       Header="Tổng tiền"
+                                       Width="120"
+                                       MinWidth="120"
+                                       IsReadOnly="True">
+                                </materialDesign:MaterialDataGridTextColumn>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="EditButton"
+                                                        Background="#3498db" BorderBrush="#3498db" Width="45"
+                                                        ToolTip="Cập nhật" IsEnabled="{Binding EditEnabled}"                                                       
+                                            Command="{Binding Path=DataContext.EditCommand,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                            CommandParameter="{Binding}">
+                                                <materialDesign:PackIcon Kind="Pencil" Foreground="White" Height="15" Width="15"/>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="DeleteButton"
+                                                        Background="#c0392b" BorderBrush="#c0392b" Width="45"
+                                                        ToolTip="Xóa"
+                                            Command="{Binding Path=DataContext.DeleteDetailCommand,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                            CommandParameter="{Binding}">
+                                                <materialDesign:PackIcon Kind="DeleteForever" Foreground="White" Height="15" Width="15"/>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </materialDesign:Card>
+                </StackPanel>
+                <materialDesign:Card Margin="10 10 0 10" Grid.Row="1">
+                    <StackPanel Orientation="Vertical">
+
+                        <Grid Margin="0 10 0 0">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type StackPanel}">
+                                        <Setter Property="Margin" Value="15"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <DockPanel Margin="20 10 20 0">
+                                    <TextBlock Text="Tổng" Style="{StaticResource BoldStyle}"></TextBlock>
+                                    <TextBlock Text="{Binding TotalPrice, StringFormat='0,0'}" 
+                                           Style="{StaticResource TitileStyle}" VerticalAlignment="Center" TextAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel Margin="20 10 20 0" >
+                                    <TextBlock Text="Mã khuyến mãi" Style="{StaticResource BoldStyle}"></TextBlock>
+                                    <TextBox  VerticalAlignment="Center" Margin="50,2,0,0" Style="{StaticResource MaterialDesignTextBox}"
+                                             Text="{Binding Code,UpdateSourceTrigger=PropertyChanged}" Width="150" MinWidth="150" FontSize="15"
+                                             materialDesign:HintAssist.Hint="Mã khuyến mãi">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding CodeTextChangeCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+
+                                    <TextBlock Text="{Binding Notify}" Visibility="{Binding NotifyVisible}"
+                                            VerticalAlignment="Center" TextAlignment="Right" Foreground="Green" FontSize="18" Margin="5 0 0 0"/>
+
+                                    <TextBlock Text="{Binding DiscountMoney, StringFormat='0,0'}" 
+                                           Style="{StaticResource TitileStyle}" VerticalAlignment="Center" TextAlignment="Right"/>
+
+                                </DockPanel>
+                                <DockPanel Margin="20 10 20 0">
+                                    <TextBlock Text="Tổng tiền phải trả" Style="{StaticResource BoldStyle}"></TextBlock>
+                                    <TextBlock Text="{Binding LastTotalPrice, StringFormat='0,0'}" 
+                                           Style="{StaticResource TitileStyle}" VerticalAlignment="Center" TextAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel Margin="20 10 20 0" LastChildFill="False">
+                                    <TextBlock Text="Tiền khách đưa" Style="{StaticResource BoldStyle}"></TextBlock>
+                                    <TextBox Text="{Binding CustomerMoney, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                            VerticalAlignment="Center" TextAlignment="Right"
+                                             DockPanel.Dock="Right" Width="200" PreviewTextInput="NumberValidationTextBox"
+                                             >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding ExchangeTextChangeCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                </DockPanel>
+                                <DockPanel Margin="20 10 20 0" LastChildFill="False">
+                                    <TextBlock Text="Tiền thừa" Style="{StaticResource BoldStyle}"></TextBlock>
+                                    <TextBlock Text="{Binding ExchangeMoney, StringFormat='0,0', UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                           Style="{StaticResource TitileStyle}" VerticalAlignment="Center" TextAlignment="Right"
+                                               DockPanel.Dock="Right" Width="200"/>
+                                </DockPanel>
+                                <Button Height="60" Width="200" Content="Thanh toán" FontSize="25" Background="Red" IsEnabled="{Binding PayEnabled}"
+                                        Command="{Binding PayCommand}"
+                                        CommandParameter="{Binding ElementName=billWindow}">
+
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
+
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <materialDesign:Card Grid.Row="0" Margin="10">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Height="300">
+                            <Grid Height="48" Background="#FF5C99D6" Grid.Row="0">
+                                <TextBlock Text="Thông tin khách hàng" Foreground="White"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TitileStyle}"/>
+                            </Grid>
+
+                            <DockPanel Margin="20 25 20 0" LastChildFill="False">
+                                <TextBlock Text="Số điện thoại" Style="{StaticResource NormalStyle}"></TextBlock>
+                                <TextBox Text="{Binding PhoneNumber}" Width="200" DockPanel.Dock="Right"
+                                            VerticalAlignment="Center" TextAlignment="Right" MaxLength="10" PreviewTextInput="NumberValidationTextBox"/>
+                            </DockPanel>
+                            <DockPanel Margin="20 15 20 0" LastChildFill="False">
+                                <TextBlock Text="Tên khách hàng" Style="{StaticResource NormalStyle}"></TextBlock>
+                                <TextBox Text="{Binding CustomerName}" Width="200" DockPanel.Dock="Right"
+                                            VerticalAlignment="Center" TextAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel Margin="20 15 20 0" LastChildFill="False">
+                                <TextBlock Text="Email" Style="{StaticResource NormalStyle}"></TextBlock>
+                                <TextBox Text="{Binding Email}" Width="200" DockPanel.Dock="Right"
+                                            VerticalAlignment="Center" TextAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel Margin="20 15 20 0" LastChildFill="False">
+                                <TextBlock Text="Địa chỉ" Style="{StaticResource NormalStyle}"></TextBlock>
+                                <TextBox Text="{Binding Address}" Width="200" DockPanel.Dock="Right"
+                                            VerticalAlignment="Center" TextAlignment="Right"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+
+                <materialDesign:Card Grid.Row="1" Margin="10 0 0 0">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Height="330">
+                            <Grid Height="48" Background="#FF5C99D6" Grid.Row="0">
+                                <TextBlock Text="Tìm kiếm khách hàng" Foreground="White"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TitileStyle}"/>
+                            </Grid>
+
+                            <DockPanel Margin="20 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                                <!-- Text box tìm kiếm-->
+                                <TextBox Width="400" FontSize="15" Height="35" Padding="10,0,0,0" DockPanel.Dock="Left"                              
+                                    materialDesign:HintAssist.Hint="Số điện thoại" Text="{Binding PhoneNumberFilter,UpdateSourceTrigger=PropertyChanged}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding FilterCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBox>
+
+                                <!-- Nút tìm kiếm-->
+                                <Button Background="#00BFFF" BorderBrush="{x:Null}" Height="35" Command="{Binding SearchCommand}" DockPanel.Dock="Right">
+                                    <materialDesign:PackIcon Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Kind="Magnify" Foreground="White"/>
+                                </Button>
+                            </DockPanel>
+
+                            <materialDesign:Card Height="230" Width="600" Margin="20,10,10,0" HorizontalAlignment="Left">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                                    <ListView Height="230" Background="Blue"
+                                ItemsSource="{Binding ListCustomers}" SelectedItem="{Binding CustomerSelectedItem}" Margin="0,0,-1,0">
+                                        <ListView.Resources>
+                                            <Style TargetType="{x:Type TextBlock}" x:Key="WrapStyle">
+                                                <Setter Property="TextWrapping" Value="Wrap"/>
+                                                <Setter Property="Width" Value="150"/>
+                                            </Style>
+                                        </ListView.Resources>
+
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding CustomerSelectionChanged}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Tên" Width="120">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding CustomerName}" Style="{StaticResource WrapStyle}"/>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+
+                                                <GridViewColumn  Header="Số điện thoại" Width="180">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding PhoneNumber}" Style="{StaticResource WrapStyle}"/>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+
+                                                <GridViewColumn  Header="Email" Width="200">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Email}" Style="{StaticResource WrapStyle}"/>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </materialDesign:Card>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

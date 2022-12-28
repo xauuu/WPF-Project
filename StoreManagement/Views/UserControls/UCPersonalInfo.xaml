@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="StoreManagement.Views.UserControls.UCPersonalInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StoreManagement.Views.UserControls"
+             
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"       
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      Background="{DynamicResource MaterialDesignPaper}"     
+     
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1200">
+    <UniformGrid Columns="2">
+        <StackPanel Margin="10,10,5,10">
+            <DockPanel>
+                <!--Username-->
+                <TextBox Name="txtUserName" materialDesign:HintAssist.Hint="Username"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            </DockPanel>
+            <DockPanel>
+                <!--Password-->
+                <TextBox Name="txtPassword" materialDesign:HintAssist.Hint="Password"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            </DockPanel>
+            <UniformGrid Columns="2">
+                <!--User ID-->
+                <TextBox Name="txtUserID" IsReadOnly="True" materialDesign:HintAssist.Hint="User ID"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,5,0"/>
+                <!--Role-->
+                <TextBox Name="txtRole" IsReadOnly="True" materialDesign:HintAssist.Hint="Role ID"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,0,0,0"/>
+            </UniformGrid>
+            <UniformGrid Columns="2">
+                <!--Button-->
+                <Button x:Name="UpdateButton" Content="Update" Click="UpdateButton_Click" Margin="10,10,5,0"/>
+                <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Margin="5,10,10,0"/>
+            </UniformGrid>
+
+        </StackPanel>
+        <StackPanel Margin="5,10,10,10">
+            <DockPanel>
+                <!--Full name-->
+                <TextBox Name="txtFullName" materialDesign:HintAssist.Hint="Full name"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            </DockPanel>
+            <UniformGrid Columns="2">
+                <!--Birthdate-->
+                <DatePicker x:Name="dpkBirthdate" materialDesign:HintAssist.Hint="Birthdate"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="0,0,5,0"/>
+                <!--ID Card-->
+                <TextBox Name="txtIdCard" materialDesign:HintAssist.Hint="ID Card number"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,0,0,0"/>
+            </UniformGrid>
+            <DockPanel>
+
+            </DockPanel>
+            <DockPanel>
+                <!--Address-->
+                <TextBox Name="txtAddress" materialDesign:HintAssist.Hint="Address"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            </DockPanel>
+        </StackPanel>
+
+
+    </UniformGrid>
+</UserControl>

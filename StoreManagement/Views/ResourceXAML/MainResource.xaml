@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:StoreManagement.ResourceXAML"
+                    xmlns:viewmodel="clr-namespace:StoreManagement.Views.ViewModels">
+    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:DashboardViewModel x:Key="DashboardVM"></viewmodel:DashboardViewModel>
+    <viewmodel:UCSaleViewModel x:Key="UCSaleVM"></viewmodel:UCSaleViewModel>
+    <viewmodel:UCStaffManagerViewModel x:Key="UCStaffManagerVM"></viewmodel:UCStaffManagerViewModel>
+    <viewmodel:UCBillViewModel x:Key="UCBillVM"></viewmodel:UCBillViewModel>
+    <viewmodel:UCProductViewModel x:Key="UCProductManagerVM"></viewmodel:UCProductViewModel>
+    <viewmodel:UCCategoryViewModel x:Key="UCCategoryManagerVM"></viewmodel:UCCategoryViewModel>
+    <viewmodel:UCStatisticViewModel x:Key="UCStatisticVM"></viewmodel:UCStatisticViewModel>
+    <viewmodel:BillViewModel x:Key="BillVM"></viewmodel:BillViewModel>
+    <viewmodel:ProductDetailViewModel x:Key="ProductDetailVM"></viewmodel:ProductDetailViewModel>
+    <viewmodel:BillDetailViewModel x:Key="BillDetailVM"></viewmodel:BillDetailViewModel>
+
+</ResourceDictionary>
