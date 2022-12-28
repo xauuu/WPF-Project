@@ -68,6 +68,54 @@
                        VerticalAlignment="Center"
                        Style="{StaticResource TitileStyle}" />
         </Grid>
+        <materialDesign:Card Grid.Row="1"
+                             Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="0"
+                            Margin="0 0 0 10">
+                    <StackPanel Orientation="Vertical"
+                                Margin="20">
+                        <DockPanel LastChildFill="False">
+                            <TextBlock Text="Mã danh mục "
+                                       VerticalAlignment="Center"
+                                       DockPanel.Dock="Left" />
+                            <TextBox Width="150"
+                                     Text="{Binding CategoryID}"
+                                     Margin="5 0 15 5"
+                                     materialDesign:HintAssist.Hint="Mã danh mục"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     IsReadOnly="True"
+                                     DockPanel.Dock="Right" />
+                        </DockPanel>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"
+                                Margin="20">
+                        <DockPanel LastChildFill="False">
+                            <TextBlock Text="Tên danh mục "
+                                       VerticalAlignment="Center"
+                                       DockPanel.Dock="Left" />
+                            <TextBox Width="150"
+                                     Text="{Binding CategoryName}"
+                                     Margin="5 0 15 5"
+                                     materialDesign:HintAssist.Hint="Tên danh mục"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     DockPanel.Dock="Right" />
+                        </DockPanel>
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Grid>
+
+        </materialDesign:Card>
+
         <materialDesign:Card Grid.Row="2"
                              Margin="5"
                              Foreground="Gray">
@@ -108,7 +156,7 @@
                             <GridViewColumn Header="Mã">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Id}"
+                                        <TextBlock Text="{Binding CategoryID}"
                                                    VerticalAlignment="Center" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -116,7 +164,7 @@
                             <GridViewColumn Header="Tên danh mục">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding DisplayName}"
+                                        <TextBlock Text="{Binding CategoryName}"
                                                    VerticalAlignment="Center"
                                                    TextWrapping="Wrap" />
                                     </DataTemplate>

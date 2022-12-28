@@ -9,6 +9,7 @@
     <viewmodel:UCBillViewModel x:Key="UCBillVM"></viewmodel:UCBillViewModel>
     <viewmodel:UCProductViewModel x:Key="UCProductManagerVM"></viewmodel:UCProductViewModel>
     <viewmodel:UCCategoryViewModel x:Key="UCCategoryManagerVM"></viewmodel:UCCategoryViewModel>
+    <viewmodel:UCBrandViewModel x:Key="UCBrandManagerVM"></viewmodel:UCBrandViewModel>
     <viewmodel:UCStatisticViewModel x:Key="UCStatisticVM"></viewmodel:UCStatisticViewModel>
     <viewmodel:BillViewModel x:Key="BillVM"></viewmodel:BillViewModel>
     <viewmodel:ProductDetailViewModel x:Key="ProductDetailVM"></viewmodel:ProductDetailViewModel>

@@ -81,7 +81,7 @@ namespace StoreManagement.DAO
             try
             {
 
-                var entity = DataProvider.Ins.DB.Products.Find(t.CategoryID);
+                var entity = DataProvider.Ins.DB.Categories.Find(t.CategoryID);
                 if (entity == null)
                 {
                     return;

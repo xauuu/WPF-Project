@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StoreManagement.DAO
 {
-    public class BrandDAO: IDao<Brand>
+    public class BrandDAO : IDao<Brand>
     {
 
         public void Delete(Brand t)
@@ -97,7 +97,7 @@ namespace StoreManagement.DAO
             try
             {
 
-                var entity = DataProvider.Ins.DB.Products.Find(t.BrandID);
+                var entity = DataProvider.Ins.DB.Brands.Find(t.BrandID);
                 if (entity == null)
                 {
                     return;

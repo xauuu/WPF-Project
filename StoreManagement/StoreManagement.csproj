@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Views\ViewModels\BillDetailViewModel.cs" />
     <Compile Include="Views\ViewModels\ProductDetailViewModel.cs" />
+    <Compile Include="Views\ViewModels\UCBrandViewModel.cs" />
     <Compile Include="Views\ViewModels\UCCategoryViewModel.cs" />
     <Compile Include="Views\ViewModels\UCPersonalInfoViewModel.cs" />
     <Compile Include="Views\Windows\BillDetailWindow.xaml.cs">
