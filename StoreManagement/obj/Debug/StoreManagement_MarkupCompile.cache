@@ -12,9 +12,9 @@ DEBUG;TRACE
 D:\C#\Xauuu\StoreManagement\StoreManagement\App.xaml
 161633538403
 3-1475374107
-72-1178997899
+73742780222
 271676879491
 Views\ResourceXAML\MainResource.xaml;Views\UserControls\UCBill.xaml;Views\UserControls\UCBrandManager.xaml;Views\UserControls\UCCategoryManager.xaml;Views\UserControls\UCPersonalInfo.xaml;Views\UserControls\UCProductManager.xaml;Views\UserControls\UCSale.xaml;Views\UserControls\UCStaffManager.xaml;Views\UserControls\UCStatistic.xaml;Views\UserControls\UCStatistics.xaml;Views\Windows\BillDetailWindow.xaml;Views\Windows\BillWindow.xaml;Views\Windows\DashboardWindow.xaml;Views\Windows\LoginWindow.xaml;Views\Windows\ProductDetailWindow.xaml;Views\Windows\WarrantyWindow.xaml;
 
-False
+True
 

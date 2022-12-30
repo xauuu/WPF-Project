@@ -11,7 +11,7 @@
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             FontFamily="{DynamicResource MaterialDesignFont}"
+             FontFamily="Calibri"
              Background="{DynamicResource MaterialDesignPaper}"
              DataContext="{StaticResource UCCategoryManagerVM}"
              mc:Ignorable="d"
@@ -28,7 +28,7 @@
             <Setter Property="FontSize"
                     Value="30" />
             <Setter Property="FontFamily"
-                    Value="Segoe" />
+                    Value="Calibri" />
             <Setter Property="FontWeight"
                     Value="Bold" />
         </Style>
@@ -37,7 +37,7 @@
             <Setter Property="FontSize"
                     Value="20" />
             <Setter Property="FontFamily"
-                    Value="Segoe" />
+                    Value="Calibri" />
             <Setter Property="FontWeight"
                     Value="Bold" />
         </Style>
@@ -46,7 +46,7 @@
             <Setter Property="FontSize"
                     Value="18" />
             <Setter Property="FontFamily"
-                    Value="Segoe UI" />
+                    Value="Calibri" />
             <Setter Property="FontWeight"
                     Value="Bold" />
         </Style>

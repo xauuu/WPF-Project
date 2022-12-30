@@ -12,6 +12,7 @@
         Width="1250"
         Foreground="White"
         ResizeMode="NoResize"
+        FontFamily="Calibri"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Name="dashboardWindow"
