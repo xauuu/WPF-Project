@@ -26,6 +26,8 @@ namespace StoreManagement.Views.ViewModels
 
         public LoginViewModel()
         {
+            UserName = "admin";
+            Password = "admin";
             CloseCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {

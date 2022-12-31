@@ -60,7 +60,7 @@
         </Grid.RowDefinitions>
         <!--Control bar-->
         <Grid Grid.Row="0"
-              Background="#FF0D1D2D">
+              Background="#282a36">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonDown">
                     <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}"
@@ -88,7 +88,7 @@
                             Height="30"
                             BorderBrush="{x:Null}"
                             Padding="0"
-                            Foreground="Gray">
+                            Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/minimizeButton.png" />
                         </Button.Background>
@@ -101,7 +101,7 @@
                              Height="30"
                              BorderBrush="{x:Null}"
                              Padding="0"
-                             Foreground="Gray">
+                             Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/maximizeButton.png" />
                         </Button.Background>
@@ -114,7 +114,7 @@
                             Height="30"
                             BorderBrush="{x:Null}"
                             Padding="0"
-                            Foreground="Gray">
+                            Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/closeButton.png" />
                         </Button.Background>
@@ -136,7 +136,7 @@
             <Grid x:Name="GridMenu"
                   Width="70"
                   HorizontalAlignment="Left"
-                  Background="#FF0D1D2D"
+                  Background="#282a36"
                   Grid.Column="0">
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="2"
@@ -165,7 +165,7 @@
                                 Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                                 Background="{x:Null}"
                                 BorderBrush="{x:Null}"
-                                Foreground="#FF0D1D2D"
+                                Foreground="#282a36"
                                 Command="{Binding OpenMenuCommand}">
                             <materialDesign:PackIcon Kind="Menu"
                                                      Width="25"
@@ -181,7 +181,7 @@
                                 Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                                 Background="{x:Null}"
                                 BorderBrush="{x:Null}"
-                                Foreground="#FF0D1D2D"
+                                Foreground="#282a36"
                                 Command="{Binding CloseMenuCommand}">
                             <materialDesign:PackIcon Kind="ArrowLeft"
                                                      Width="25"
@@ -197,8 +197,10 @@
                                    Stretch="Fill" />
                             <TextBlock Name="txtLoggedInUser"
                                        Text="{Binding DisplayName}"
-                                       Height="20"
+                                       FontSize="20"
+                                       Height="25"
                                        VerticalAlignment="Center"
+                                       TextAlignment="Center"
                                        Margin="20,10"
                                        Foreground="#000" />
                         </StackPanel>
@@ -208,7 +210,7 @@
                         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
                                                              OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
                             <Grid Margin="{Binding GridCursor}"
-                                  Background="#FF9496F5"
+                                  Background="#ff79c6"
                                   Width="10"
                                   HorizontalAlignment="Left"
                                   Height="60"
@@ -302,7 +304,7 @@
                             </Button>
                             <Button x:Name="ItemBrandManager"
                                     Height="60"
-                                    ToolTip="Quản lý danh mục"
+                                    ToolTip="Quản lý thương hiệu"
                                     Command="{Binding BrandManagerCommand}"
                                     Visibility="{Binding BrandManagerVisibility}">
                                 <StackPanel Orientation="Horizontal">
@@ -395,7 +397,12 @@
             <!--Grid contains all of usercontrols-->
             <Grid Name="GridMain"
                   Grid.Column="1">
-                <UserControl Content="{Binding Page}"></UserControl>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="559*" />
+                    <ColumnDefinition Width="622*" />
+                </Grid.ColumnDefinitions>
+                <UserControl Content="{Binding Page}"
+                             Grid.ColumnSpan="2"></UserControl>
             </Grid>
 
         </Grid>

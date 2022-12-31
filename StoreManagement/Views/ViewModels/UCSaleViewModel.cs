@@ -5,6 +5,7 @@ using StoreManagement.Views.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -215,9 +216,8 @@ namespace StoreManagement.Views.ViewModels
                 //ListBrands = new ObservableCollection<Brand>(brandBUS.GetAll());
 
                 ListCategories.Add(new Category { CategoryID = 0, CategoryName = "Tất cả" });
-                ListBrands.Add(new Brand { BrandID = 0, BrandName = "Tất cả" });
-
                 CategorySelectedItem = ListCategories.Where(c => c.CategoryID == 0).SingleOrDefault();
+                ListBrands.Add(new Brand { BrandID = 0, BrandName = "Tất cả" });
                 BrandSelectedItem = ListBrands.Where(b => b.BrandID == 0).SingleOrDefault();
 
                 IsFirstLoaded = false;

@@ -12,7 +12,7 @@
         Width="800">
     <Grid>
         <StackPanel>
-            <Grid Background="Red">
+            <Grid Background="#ff5555">
                 <TextBlock Text="Warranty"
                            Foreground="White"
                            TextAlignment="Center"

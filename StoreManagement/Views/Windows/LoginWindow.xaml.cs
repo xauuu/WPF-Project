@@ -22,8 +22,6 @@ namespace StoreManagement.Views.Windows
         public LoginWindow()
         {
             InitializeComponent();
-            txtUserName.Text = "admin";
-            PasswordBox.Password = "admin";
         }
     }
 }

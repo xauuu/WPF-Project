@@ -30,6 +30,8 @@
                     Value="Calibri" />
             <Setter Property="FontWeight"
                     Value="Bold" />
+            <Setter Property="Foreground"
+                    Value="#282a36" />
         </Style>
         <Style TargetType="{x:Type TextBlock}"
                x:Key="TitileStyle">
@@ -39,6 +41,8 @@
                     Value="Calibri" />
             <Setter Property="FontWeight"
                     Value="Bold" />
+            <Setter Property="Foreground"
+                    Value="#282a36" />
         </Style>
         <Style TargetType="{x:Type TextBlock}"
                x:Key="NormalStyle">
@@ -48,6 +52,8 @@
                     Value="Calibri" />
             <Setter Property="FontWeight"
                     Value="Bold" />
+            <Setter Property="Foreground"
+                    Value="#282a36" />
         </Style>
     </Window.Resources>
 
@@ -71,7 +77,7 @@
                 <StackPanel Grid.Row="0"
                             Margin="10,10,0,0">
                     <Grid Height="48"
-                          Background="#FF5C99D6"
+                          Background="#282a36"
                           Grid.Row="0">
                         <TextBlock Text="Danh sách sản phẩm"
                                    Foreground="White"
@@ -274,7 +280,7 @@
                                         Width="200"
                                         Content="Thanh toán"
                                         FontSize="25"
-                                        Background="Red"
+                                        Background="#ff5555"
                                         IsEnabled="{Binding PayEnabled}"
                                         Command="{Binding PayCommand}"
                                         CommandParameter="{Binding ElementName=billWindow}">
@@ -297,7 +303,7 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Height="300">
                             <Grid Height="48"
-                                  Background="#FF5C99D6"
+                                  Background="#282a36"
                                   Grid.Row="0">
                                 <TextBlock Text="Thông tin khách hàng"
                                            Foreground="White"
@@ -357,7 +363,7 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Height="330">
                             <Grid Height="48"
-                                  Background="#FF5C99D6"
+                                  Background="#282a36"
                                   Grid.Row="0">
                                 <TextBlock Text="Tìm kiếm khách hàng"
                                            Foreground="White"

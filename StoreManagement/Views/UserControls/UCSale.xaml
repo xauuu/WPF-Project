@@ -92,7 +92,7 @@
                                 </Grid>
 
                                 <!-- Nút tìm kiếm-->
-                                <Button Background="#00BFFF"
+                                <Button Background="#6272a4"
                                         BorderBrush="{x:Null}"
                                         Height="35"
                                         Command="{Binding FilterSelectionChanged}">
@@ -172,11 +172,11 @@
                                 </StackPanel>
                             </StackPanel>
 
-                            <Button BorderBrush="Red"
+                            <Button BorderBrush="#ff5555"
                                     BorderThickness="2"
                                     Command="{Binding CartWindowCommand}"
                                     Margin="0,5,50,0"
-                                    Background="Red"
+                                    Background="#ff5555"
                                     DockPanel.Dock="Right"
                                     Height="40"
                                     Width="Auto"
@@ -200,11 +200,11 @@
                                                VerticalAlignment="Center" />
                                 </StackPanel>
                             </Button>
-                            <Button BorderBrush="Red"
+                            <Button BorderBrush="#ff5555"
                                     BorderThickness="2"
                                     Command="{Binding WarrantyCommand}"
                                     Margin="0,5,50,0"
-                                    Background="Blue"
+                                    Background="#bd93f9"
                                     DockPanel.Dock="Right"
                                     Height="40"
                                     Width="Auto"

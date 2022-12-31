@@ -34,7 +34,7 @@ namespace StoreManagement.DAO
         {
             try
             {
-                 return DataProvider.Ins.DB.Products.Find(id);
+                return DataProvider.Ins.DB.Products.Find(id);
             }
             catch (Exception e)
             {

@@ -61,7 +61,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="0"
               Height="48"
-              Background="#FF6347"
+              Background="#ff5555"
               Margin="5">
             <TextBlock Text="Quản lý sản phẩm"
                        Foreground="White"

@@ -198,6 +198,8 @@ namespace StoreManagement.Views.ViewModels
                 StaffManagerVisibility = Visibility.Collapsed;
                 StatisticsManagerVisibility = Visibility.Collapsed;
                 PersonalInfoVisibility = Visibility.Visible;
+                CategoryManagerVisibility = Visibility.Collapsed;
+                BrandManagerVisibility = Visibility.Collapsed;
             }
         }
     }

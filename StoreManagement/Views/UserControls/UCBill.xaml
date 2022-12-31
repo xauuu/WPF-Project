@@ -60,7 +60,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="0"
               Height="48"
-              Background="#FF6347">
+              Background="#ff5555">
             <TextBlock Text="Danh sách hóa đơn"
                        Foreground="White"
                        HorizontalAlignment="Center"

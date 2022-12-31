@@ -60,9 +60,9 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="0"
               Height="48"
-              Background="#04B404">
+              Background="#50fa7b">
             <TextBlock Text="Chi tiết hóa đơn"
-                       Foreground="White"
+                       Foreground="#6272a4"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Style="{StaticResource TitileStyle}" />
