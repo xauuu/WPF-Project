@@ -106,7 +106,8 @@ namespace StoreManagement.Views.ViewModels
             });
             CategorySelectionChanged = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                LoadListBrands();
+                //LoadListBrands();
+                LoadListByCondition();
             });
             CartWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
@@ -212,8 +213,8 @@ namespace StoreManagement.Views.ViewModels
             if (IsFirstLoaded)
             {
                 ListCategories = new ObservableCollection<Category>(categoryBUS.GetAll());
-                ListBrands = new ObservableCollection<Brand>();
-                //ListBrands = new ObservableCollection<Brand>(brandBUS.GetAll());
+                //ListBrands = new ObservableCollection<Brand>();
+                ListBrands = new ObservableCollection<Brand>(brandBUS.GetAll());
 
                 ListCategories.Add(new Category { CategoryID = 0, CategoryName = "Tất cả" });
                 CategorySelectedItem = ListCategories.Where(c => c.CategoryID == 0).SingleOrDefault();

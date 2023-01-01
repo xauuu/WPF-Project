@@ -66,6 +66,7 @@
                          FontSize="18"
                          Focusable="True" />
                 <PasswordBox x:Name="PasswordBox"
+                             Password="admin"
                              Margin="0,10"
                              materialDesign:HintAssist.Hint="Mật khẩu"
                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"

@@ -241,7 +241,7 @@
                                     ToolTip="Trang chủ"
                                     Command="{Binding HomeCommand}">
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Shopify"
+                                    <materialDesign:PackIcon Kind="Store"
                                                              Width="25"
                                                              Height="25"
                                                              VerticalAlignment="Center"
@@ -308,7 +308,7 @@
                                     Command="{Binding BrandManagerCommand}"
                                     Visibility="{Binding BrandManagerVisibility}">
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Shape"
+                                    <materialDesign:PackIcon Kind="Apple"
                                                              Width="25"
                                                              Height="25"
                                                              VerticalAlignment="Center"

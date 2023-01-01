@@ -189,6 +189,8 @@ namespace StoreManagement.Views.ViewModels
                 StaffManagerVisibility = Visibility.Visible;
                 StatisticsManagerVisibility = Visibility.Visible;
                 PersonalInfoVisibility = Visibility.Collapsed;
+                CategoryManagerVisibility = Visibility.Visible;
+                BrandManagerVisibility = Visibility.Visible;
 
             }
             //cashier

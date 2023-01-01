@@ -3,19 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-             xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d"
              FontFamily="Calibri"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             FontSize="20">
+             FontSize="20"
+             DataContext="{StaticResource StatisticVM}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <!--<Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -33,16 +40,22 @@
                     Content="Thống kê theo doanh thu"
                     Click="ByRevenue_Click" />
 
-        </Grid>
-        <Grid Grid.Row="1">
-            <DVC:Chart Name="chartStatistics"
+        </Grid>-->
+        <Grid Grid.Row="1"
+              Margin="20">
+            <!--<DVC:Chart Name="chartStatistics"
                        Foreground="Black">
                 <DVC:Chart.Series>
-                    <DVC:PieSeries IndependentValueBinding="{Binding Path=Key}"
-                                   DependentValueBinding="{Binding Path=Value}">
-                    </DVC:PieSeries>
+                    <DVC:LineSeries IndependentValueBinding="{Binding Path=Key}"
+                                    DependentValueBinding="{Binding Path=Value}">
+                    </DVC:LineSeries>
                 </DVC:Chart.Series>
-            </DVC:Chart>
+            </DVC:Chart>-->
+            <lvc:CartesianChart Name="chartStatistics"
+                                Series="{Binding Series}"
+                                Title="{Binding Title}"
+                                XAxes="{Binding XAxes}"
+                                YAxes="{Binding YAxes}" />
         </Grid>
 
     </Grid>

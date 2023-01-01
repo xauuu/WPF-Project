@@ -14,5 +14,6 @@
     <viewmodel:BillViewModel x:Key="BillVM"></viewmodel:BillViewModel>
     <viewmodel:ProductDetailViewModel x:Key="ProductDetailVM"></viewmodel:ProductDetailViewModel>
     <viewmodel:BillDetailViewModel x:Key="BillDetailVM"></viewmodel:BillDetailViewModel>
+    <viewmodel:UCStatisticViewModel x:Key="StatisticVM"></viewmodel:UCStatisticViewModel>
 
 </ResourceDictionary>

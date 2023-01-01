@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
 
 namespace StoreManagement.Views.UserControls
 {
@@ -32,46 +34,46 @@ namespace StoreManagement.Views.UserControls
             //Return if list contains no products
             if (list.Count() == 0)
                 return;
-            LoadStatisticsByProduct();
+            LoadStatisticsByDate();
         }
         private void LoadStatisticsByProduct()
         {
-            //Only get productID and unit price
-            List<KeyValuePair<string, double>> sources = new List<KeyValuePair<string, double>>{ };
-            foreach (BillDetail bd in list)
-            {
-                sources.Add(new KeyValuePair<string, double>(bd.ProductId.ToString(), bd.UnitPrice*bd.Amount));
-            }
-            //Sum duplicated value
-            List<KeyValuePair<string, double>> result = new List<KeyValuePair<string, double>> { };
-            foreach (KeyValuePair<string, double> pair in sources)
-            {
-                if (result.FindIndex(x => x.Key == pair.Key) < 0)
-                {
-                    double total = sources.Where(x => x.Key == pair.Key).Sum(x => x.Value);
-                    result.Add(new KeyValuePair<string, double>(pair.Key, total));
-                }
-            }
-            //Replace key with Product DisplayName
-            ProductDAO productDAO = new ProductDAO();
-            for (int i=0;i<result.Count();i++)
-            {
-                result[i] = new KeyValuePair<string, double>(productDAO.Get(int.Parse(result[i].Key)).DisplayName, result[i].Value);
-            }
-            ((PieSeries)chartStatistics.Series[0]).ItemsSource = result;
+            /* //Only get productID and unit price
+             List<KeyValuePair<string, double>> sources = new List<KeyValuePair<string, double>> { };
+             foreach (BillDetail bd in list)
+             {
+                 sources.Add(new KeyValuePair<string, double>(bd.ProductId.ToString(), bd.UnitPrice * bd.Amount));
+             }
+             //Sum duplicated value
+             List<KeyValuePair<string, double>> result = new List<KeyValuePair<string, double>> { };
+             foreach (KeyValuePair<string, double> pair in sources)
+             {
+                 if (result.FindIndex(x => x.Key == pair.Key) < 0)
+                 {
+                     double total = sources.Where(x => x.Key == pair.Key).Sum(x => x.Value);
+                     result.Add(new KeyValuePair<string, double>(pair.Key, total));
+                 }
+             }
+             //Replace key with Product DisplayName
+             ProductDAO productDAO = new ProductDAO();
+             for (int i = 0; i < result.Count(); i++)
+             {
+                 result[i] = new KeyValuePair<string, double>(productDAO.Get(int.Parse(result[i].Key)).DisplayName, result[i].Value);
+             }
+             ((PieSeries)chartStatistics.Series[0]).ItemsSource = result;
 
-            chartStatistics.Title = "Statistics by products";
+             chartStatistics.Title = "Statistics by products";*/
         }
 
         private void LoadStatisticsByBrand()
         {
-            //Only get productID and unit price
+            /*//Only get productID and unit price
             List<KeyValuePair<string, double>> sources = new List<KeyValuePair<string, double>> { };
             foreach (BillDetail bd in list)
             {
                 sources.Add(new KeyValuePair<string, double>(bd.ProductId.ToString(), bd.UnitPrice));
             }
-            
+
             //Replace key with Product DisplayName
             ProductDAO productDAO = new ProductDAO();
             for (int i = 0; i < sources.Count(); i++)
@@ -91,42 +93,59 @@ namespace StoreManagement.Views.UserControls
             }
             ((PieSeries)chartStatistics.Series[0]).ItemsSource = result;
 
-            chartStatistics.Title = "Statistics by brands";
+            chartStatistics.Title = "Statistics by brands";*/
         }
 
         private void LoadStatisticsByRevenue()
         {
-            //Only get productID and unit price
-            List<KeyValuePair<string, double>> sources = new List<KeyValuePair<string, double>> { };
-            foreach (BillDetail bd in list)
-            {
-                Nullable <double> originalPrice = new ProductDAO().Get(bd.ProductId).OriginalPrice;
-                sources.Add(new KeyValuePair<string, double>(bd.ProductId.ToString(), (bd.UnitPrice - (double)originalPrice) * bd.Amount));
-            }
-            //Sum duplicated value
-            List<KeyValuePair<string, double>> result = new List<KeyValuePair<string, double>> { };
-            foreach (KeyValuePair<string, double> pair in sources)
-            {
-                if (result.FindIndex(x => x.Key == pair.Key) < 0)
-                {
-                    double total = sources.Where(x => x.Key == pair.Key).Sum(x => x.Value);
-                    result.Add(new KeyValuePair<string, double>(pair.Key, total));
-                }
-            }
-            //Replace key with Product DisplayName
-            ProductDAO productDAO = new ProductDAO();
-            for (int i = 0; i < result.Count(); i++)
-            {
-                result[i] = new KeyValuePair<string, double>(productDAO.Get(int.Parse(result[i].Key)).DisplayName, result[i].Value);
-            }
-            ((PieSeries)chartStatistics.Series[0]).ItemsSource = result;
+            /* //Only get productID and unit price
+             List<KeyValuePair<string, double>> sources = new List<KeyValuePair<string, double>> { };
+             foreach (BillDetail bd in list)
+             {
+                 Nullable<double> originalPrice = new ProductDAO().Get(bd.ProductId).OriginalPrice;
+                 sources.Add(new KeyValuePair<string, double>(bd.ProductId.ToString(), (bd.UnitPrice - (double)originalPrice) * bd.Amount));
+             }
+             //Sum duplicated value
+             List<KeyValuePair<string, double>> result = new List<KeyValuePair<string, double>> { };
+             foreach (KeyValuePair<string, double> pair in sources)
+             {
+                 if (result.FindIndex(x => x.Key == pair.Key) < 0)
+                 {
+                     double total = sources.Where(x => x.Key == pair.Key).Sum(x => x.Value);
+                     result.Add(new KeyValuePair<string, double>(pair.Key, total));
+                 }
+             }
+             //Replace key with Product DisplayName
+             ProductDAO productDAO = new ProductDAO();
+             for (int i = 0; i < result.Count(); i++)
+             {
+                 result[i] = new KeyValuePair<string, double>(productDAO.Get(int.Parse(result[i].Key)).DisplayName, result[i].Value);
+             }
+             ((PieSeries)chartStatistics.Series[0]).ItemsSource = result;
 
-            chartStatistics.Title = "Statistics by revenue";
+             chartStatistics.Title = "Statistics by revenue";*/
+        }
+
+        private void LoadStatisticsByDate()
+        {
+            /*// sales statistics by day
+            List<Bill> bill = new BillDAO().GetAll().ToList();
+            List<KeyValuePair<string, double>> result = new List<KeyValuePair<string, double>> { };
+
+            for (int i = 0; i < 6; i++)
+            {
+                DateTime date = DateTime.Now.AddDays(-i);
+                double total = bill.Where(x => x.BillDate.Date == date.Date).Sum(x => x.TotalPrice);
+                result.Add(new KeyValuePair<string, double>(date.Date.ToString("dd/MM/yyyy"), total));
+            }
+            result.Reverse();
+            ((LineSeries)chartStatistics.Series[0]).ItemsSource = result;*/
+
         }
 
         private void ByProducts_Click(object sender, RoutedEventArgs e)
         {
-            LoadStatisticsByProduct();
+            LoadStatisticsByDate();
         }
 
         private void ByBrands_Click(object sender, RoutedEventArgs e)
