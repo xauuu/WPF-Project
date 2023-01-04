@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace StoreManagement.Views.ViewModels
 {
-    public class UCBillViewModel: BaseViewModel
+    public class UCBillViewModel : BaseViewModel
     {
         private BillBUS billBUS = new BillBUS();
         private UserBUS userBUS = new UserBUS();
@@ -23,7 +23,6 @@ namespace StoreManagement.Views.ViewModels
         public ICommand LoadCommand { get; set; }
         public ICommand ViewBillDetailCommand { get; set; }
         public ICommand FilterCommand { get; set; }
-        public ICommand DeleteCommand { get; set; }
 
         #endregion
 
@@ -77,10 +76,6 @@ namespace StoreManagement.Views.ViewModels
             {
                 Filter();
             });
-            DeleteCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-            {
-                
-            });
         }
 
         private void Filter()
@@ -92,7 +87,7 @@ namespace StoreManagement.Views.ViewModels
         }
 
         private void LoadListByCondition(DateTime startDate, DateTime endDate, int CashierID)
-        {           
+        {
             ListBills = new ObservableCollection<Bill>(billBUS.GetAll(startDate, endDate, CashierID));
         }
 
@@ -106,21 +101,19 @@ namespace StoreManagement.Views.ViewModels
 
                 StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
                 EndDate = DateTime.Now;
-                isFirstLoaded = false;                
+                isFirstLoaded = false;
             }
             //Admin
             if (StaticData.RoleID == 1)
             {
                 IDVisibility = Visibility.Visible;
                 ListUsersVisibility = Visibility.Visible;
-                DeleteButtonVisibility = Visibility.Collapsed;
             }
             //Nhân viên
             else if (StaticData.RoleID == 2)
             {
                 IDVisibility = Visibility.Collapsed;
                 ListUsersVisibility = Visibility.Collapsed;
-                DeleteButtonVisibility = Visibility.Collapsed;
             }
             ListBills = new ObservableCollection<Bill>(billBUS.GetAll());
         }

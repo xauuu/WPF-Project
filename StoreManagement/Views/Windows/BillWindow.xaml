@@ -16,7 +16,7 @@
         DataContext="{StaticResource BillVM}"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        d:DesignHeight="700"
+        d:DesignHeight="650"
         d:DesignWidth="1200"
         Title="Hóa đơn"
         Name="billWindow"
@@ -209,38 +209,6 @@
                                                TextAlignment="Right" />
                                 </DockPanel>
                                 <DockPanel Margin="20 10 20 0">
-                                    <TextBlock Text="Mã khuyến mãi"
-                                               Style="{StaticResource BoldStyle}"></TextBlock>
-                                    <TextBox  VerticalAlignment="Center"
-                                              Margin="50,2,0,0"
-                                              Style="{StaticResource MaterialDesignTextBox}"
-                                              Text="{Binding Code,UpdateSourceTrigger=PropertyChanged}"
-                                              Width="150"
-                                              MinWidth="150"
-                                              FontSize="15"
-                                              materialDesign:HintAssist.Hint="Mã khuyến mãi">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="TextChanged">
-                                                <i:InvokeCommandAction Command="{Binding CodeTextChangeCommand}" />
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </TextBox>
-
-                                    <TextBlock Text="{Binding Notify}"
-                                               Visibility="{Binding NotifyVisible}"
-                                               VerticalAlignment="Center"
-                                               TextAlignment="Right"
-                                               Foreground="Green"
-                                               FontSize="18"
-                                               Margin="5 0 0 0" />
-
-                                    <TextBlock Text="{Binding DiscountMoney, StringFormat='0,0'}"
-                                               Style="{StaticResource TitileStyle}"
-                                               VerticalAlignment="Center"
-                                               TextAlignment="Right" />
-
-                                </DockPanel>
-                                <DockPanel Margin="20 10 20 0">
                                     <TextBlock Text="Tổng tiền phải trả"
                                                Style="{StaticResource BoldStyle}"></TextBlock>
                                     <TextBlock Text="{Binding LastTotalPrice, StringFormat='0,0'}"
@@ -359,9 +327,9 @@
                 </materialDesign:Card>
 
                 <materialDesign:Card Grid.Row="1"
-                                     Margin="10 0 0 0">
+                                     Margin="10 0 10 0">
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Height="330">
+                        <StackPanel Height="285">
                             <Grid Height="48"
                                   Background="#282a36"
                                   Grid.Row="0">
@@ -405,13 +373,13 @@
                                 </Button>
                             </DockPanel>
 
-                            <materialDesign:Card Height="230"
+                            <materialDesign:Card Height="180"
                                                  Width="600"
                                                  Margin="20,10,10,0"
                                                  HorizontalAlignment="Left">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-                                    <ListView Height="230"
+                                    <ListView Height="180"
                                               Background="Blue"
                                               ItemsSource="{Binding ListCustomers}"
                                               SelectedItem="{Binding CustomerSelectedItem}"

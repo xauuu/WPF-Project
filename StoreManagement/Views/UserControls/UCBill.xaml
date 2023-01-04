@@ -212,7 +212,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn>
+                            <!--<GridViewColumn>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button BorderBrush="Red"
@@ -240,7 +240,7 @@
                                         </Button>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
+                            </GridViewColumn>-->
                             <GridViewColumn>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
