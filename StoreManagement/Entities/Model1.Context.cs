@@ -12,20 +12,19 @@ namespace StoreManagement.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.ModelConfiguration.Conventions;
-
+    
     public partial class DBStoreManagementEntities : DbContext
     {
         public DBStoreManagementEntities()
             : base("name=DBStoreManagementEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillDetail> BillDetails { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }

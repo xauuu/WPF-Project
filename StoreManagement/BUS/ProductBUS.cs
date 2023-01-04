@@ -42,16 +42,17 @@ namespace StoreManagement.BUS
         public List<Product> GetAll(string searchText, int categoryID, int brandID)
         {
             List<Product> list = ProductDAO.GetAll();
-            
+
             if (categoryID != 0)
             {
                 list = list.Where(pro => pro.CategoryID == categoryID).ToList();
 
-                if (brandID != 0)
-                {
-                    list = list.Where(pro => pro.BrandID == brandID).ToList();
+            }
 
-                }
+            if (brandID != 0)
+            {
+                list = list.Where(pro => pro.BrandID == brandID).ToList();
+
             }
 
             if (!string.IsNullOrEmpty(searchText))
